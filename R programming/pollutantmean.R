@@ -8,10 +8,21 @@ get_file_path <- function(directory, file_id) {
     }
 }
 
+means_of_cities = vector(mode = "numeric")
+
 pollutantmean <- function(directory ,pollutant ,id = 1:332){
     for (file_id in id) {
         file_path = get_file_path(directory,file_id)
         data <- read.csv(file_path)
-        mean(data$pollutant, na.rm = TRUE)
+        index = 2
+        if (pollutant == "sulfate"){
+            index = 2
+        }else{
+            index = 3
+        }
+        print(index)
+        mean_of_this_city = mean(data[,index], na.rm = TRUE)
+        means_of_cities <- c(means_of_cities, mean_of_this_city)
     }
+    mean(means_of_cities)
 }
