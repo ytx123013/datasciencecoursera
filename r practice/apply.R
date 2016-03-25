@@ -5,7 +5,7 @@ y <- lapply(x, mean)
 
 x <- list(matrix(1:6,2,3),matrix(1:8,4,2))
 y <- lapply(x,function(elt){
-    elt[,1]
+    elt[,1]x
 })
 
 #sapply     variant of lapply
